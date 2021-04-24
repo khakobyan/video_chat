@@ -10,6 +10,16 @@ function CallSetupScreen({navigation}) {
   const [server, setServer] = useState(`https://meet.jit.si`)
   const [roomName, setRoomName] = useState(``)
   const [nickName, setNickName] = useState(``)
+  const [serverError, setServerError] = useState(false)
+  const [roomNameError, setRoomNameError] = useState(false)
+
+  const checkAndStart = () => {
+    setServerError(!server.length);
+    setRoomNameError(!roomName.length);
+    (server.length && roomName.length) &&
+      navigation.navigate(`Call`, { uri: `${server}/${roomName}`});
+  }
+
   return (
     <VCContainer>
       <View style={styles.container}>
@@ -23,12 +33,14 @@ function CallSetupScreen({navigation}) {
               placeholderText='eg: meet.jitsi.com'
               onChangeText={setServer}
               value={server}
-            />
+              error={serverError}
+              />
             <VCInput
               labelValue='Meeting Room Name'
               placeholderText='room name'
               onChangeText={setRoomName}
               value={roomName}
+              error={roomNameError}
             />
             <VCInput
               labelValue='Your Nickname'
@@ -42,9 +54,14 @@ function CallSetupScreen({navigation}) {
               buttonTitle="Start call Standart"
               largeButton
               color={GREEN}
-              onPress={() => navigation.navigate(`Call`, { uri: `${server}/${roomName}`})}
+              onPress={() => checkAndStart()}
+              />
+            <VCButton
+              buttonTitle="Start call Custom UI"
+              largeButton
+              color={GREEN}
+              onPress={() => checkAndStart()}
             />
-            <VCButton buttonTitle="Start call Custom UI " largeButton color={GREEN} onPress={()=>console.log(`2222`)}/>
           </View>
         </View>
       </View>

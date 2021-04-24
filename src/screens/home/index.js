@@ -10,9 +10,17 @@ function HomeScreen({navigation}) {
       <View style={styles.container}>
         <Text style={styles.text}>React Native Test App</Text>
         <View style={styles.buttonsContainer}>
-          <VCButton buttonTitle="Make a call" largeButton color={GREEN} onPress={()=>navigation.navigate(`CallSetup`)}/>
+          <VCButton
+            buttonTitle="Make a call"
+            largeButton color={GREEN}
+            onPress={()=>navigation.navigate(`CallSetup`)}
+          />
           <VCButton buttonTitle="Chat" color={WHITE}/>
-          <VCButton buttonTitle="Open Library" color={AQUA}/>
+          <VCButton
+            buttonTitle="Open Library"
+            color={AQUA}
+            onPress={()=>navigation.navigate(`LibraryPage`)}
+          />
           <VCButton buttonTitle="Create Note" color={AQUA}/>
           <VCButton buttonTitle="Create Ideaboard" color={AQUA}/>
         </View>

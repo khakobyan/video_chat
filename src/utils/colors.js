@@ -3,3 +3,4 @@ export const WHITE = '#ffffff';
 export const GREEN = '#1bc321';
 export const AQUA = '#287eff';
 export const GREY = '#b3b2b1';
+export const RED = '#eb4c34';
